@@ -6,7 +6,7 @@
  */
 
  // My Solution
- function diffArray(arr1, arr2) {
+function diffArray(arr1, arr2) {
     let newArr = [];
     let arrBig = [...arr1, ...arr2];
 
