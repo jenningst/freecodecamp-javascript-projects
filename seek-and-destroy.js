@@ -1,16 +1,17 @@
 /**
  * Removes all elements from an array that are the same value as the arguments.
  * @param {Array} arr An array of elements needing removal.
- * @return {args} The arguments for the elements to be removed.
+ * @param {args} The arguments for the elements to be removed.
+ * @return {Array} An array with elements removed.
  */
 
  // My Solution
- function destroyer(arr) {
+function destroyer(arr) {
     var args = Array.prototype.slice.call(arguments).slice(1);
     return arr.filter(function(val) {
         return !args.includes(val);
     })
-  }
+}
 
 // Tests
 console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3)); // should return [1, 1]
