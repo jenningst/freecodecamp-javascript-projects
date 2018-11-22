@@ -7,12 +7,16 @@
 
  // My Solution
 function whatIsInAName(collection, source) {
-    let names = Object.keys(source);
+    let sourceNames = Object.keys(source); // keys of the source arg
 
-    return collection.filter(function(item) {
-        for (let i = 0; i < names.length; i++) {
-            if(!item.hasOwnProperty(names[i] || item[names[i]] !== source[names[i]])) {
+    return collection.filter(function (item) { // filter the collection
+        for (let i = 0; i < sourceNames.length; i++) {
+            if (!item.hasOwnProperty(sourceNames[i])) {
                 return false;
+            } else {
+                if (item[sourceNames[i]] !== source[sourceNames[i]]) {
+                    return false;
+                }
             }
         }
         return true;
@@ -20,12 +24,12 @@ function whatIsInAName(collection, source) {
 }
 
 // Tests
-// console.log(whatIsInAName([
-//                             { first: "Romeo", last: "Montague" }, 
-//                             { first: "Mercutio", last: null }, 
-//                             { first: "Tybalt", last: "Capulet" }
-//                           ], 
-//                             { last: "Capulet" })); 
+console.log(whatIsInAName([
+                            { first: "Romeo", last: "Montague" }, 
+                            { first: "Mercutio", last: null }, 
+                            { first: "Tybalt", last: "Capulet" }
+                          ], 
+                            { last: "Capulet" })); 
     // should return [{ first: "Tybalt", last: "Capulet" }]
 
 console.log(whatIsInAName([
@@ -34,10 +38,18 @@ console.log(whatIsInAName([
                             { "apple": 1, "bat": 2, "cookie": 4 }
                           ], 
                             { "apple": 1, "bat": 2 })); 
-//     // [{ "apple": 1, "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }]
+     // should return [{ "apple": 1, "bat": 2 }, { "apple": 1, "bat": 2, "cookie": 2 }]
 
-// console.log(whatIsInAName([
-//                             {"a": 1, "b": 2, "c": 3}
-//                           ], 
-//                             {"a": 1, "b": 9999, "c": 3}));
-//     // []
+console.log(whatIsInAName([
+                            {"a": 1, "b": 2, "c": 3}
+                          ], 
+                            {"a": 1, "b": 9999, "c": 3}));
+    // should return []
+
+console.log(whatIsInAName([
+                            { "apple": 1, "bat": 2 }, 
+                            { "apple": 1 }, 
+                            { "apple": 1, "bat": 2, "cookie": 2 }
+                          ], 
+                            { "apple": 1, "cookie": 2 }));
+    // should return [{ "apple": 1, "bat": 2, "cookie": 2 }]
