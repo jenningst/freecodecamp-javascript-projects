@@ -10,18 +10,20 @@ function translatePigLatin(str) {
     let vowels = /[aeiou]/i; // starting with vowel, case insensitive
     
     if (str[0].match(vowels)) { // first letter is a vowel
-        return str.concat('way');;
+        return str.concat('way');
     } else { // first letter is a consanant
         for (let char of str) {            
             if(char.match(vowels)){              
                 let index = str.indexOf(char); // first instance of vowel
-                return str.slice(index, str.length - 1).concat(str.slice(0, index), 'ay');
+                return str.slice(index, str.length).concat(str.slice(0, index), 'ay');
             }
         }
+        return str.concat('ay');
     }
 }
 
 // Tests
+console.log(translatePigLatin("clfrn")); // should return "clfrnway".
 console.log(translatePigLatin("california")); // should return "aliforniacay".
 console.log(translatePigLatin("paragraphs")); // should return "aragraphspay".
 console.log(translatePigLatin("glove")); // should return "oveglay".
