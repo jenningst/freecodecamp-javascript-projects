@@ -1,11 +1,8 @@
 /**
  * Return the DNA strand with its missing pairing element.
- * @param {str} str The the DNA strand to convert.
+ * @param {str} str The DNA strand to convert.
  * @return {str} The converted DNA strand.
  */
-
- // Skills Demonstrated
- // * Array mapping
 
 // My Solution
 function pairElement(str) {
@@ -22,6 +19,9 @@ function pairElement(str) {
         dnaObj.push(base, basePairs[base]);
         mappedPairs[index] = dnaObj;
     });
+
+    // intermediate solution
+    // return arr.map(x => [x, pairs[x]]);
 
     return mappedPairs;
 }
