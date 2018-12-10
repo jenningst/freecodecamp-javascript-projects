@@ -4,26 +4,32 @@
  * @return {str} The converted DNA strand.
  */
 
-// My Solution
-function pairElement(str) {
-    let dnaStrand = str.split('');
-    let mappedPairs = [];
+// // BASIC SOLUTION
+// function pairElement(str) {
+//     let dnaStrand = str.split('');
+//     let mappedPairs = [];
 
-    // our base pairs for matching
-    const basePairs = {
-        "A": "T", "T": "A", "C": "G", "G": "C"
-    };
+//     // our base pairs for matching
+//     const basePairs = {
+//         "A": "T", "T": "A", "C": "G", "G": "C"
+//     };
 
-    dnaStrand.forEach((base, index) => {
-        let dnaObj = [];
-        dnaObj.push(base, basePairs[base]);
-        mappedPairs[index] = dnaObj;
-    });
+//     dnaStrand.forEach((base, index) => {
+//         let dnaObj = [];
+//         dnaObj.push(base, basePairs[base]);
+//         mappedPairs[index] = dnaObj;
+//     });
 
-    // intermediate solution
-    // return arr.map(x => [x, pairs[x]]);
+//     // intermediate solution
+//     // return arr.map(x => [x, pairs[x]]);
 
-    return mappedPairs;
+//     return mappedPairs;
+// }
+
+// INTERMEDIATE SOLUTION
+const pairElement = (str) => {
+    const basePairs = { A: "T", T: "A", C: "G", G: "C" };
+    return str.split('').map(letter => [letter, basePairs[letter]])
 }
 
 // Tests
